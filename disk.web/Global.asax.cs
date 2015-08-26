@@ -46,6 +46,10 @@ namespace disk.web
 
             bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
 
+            //init data provider
+            var dataProviderInstance = EngineContext.Current.Resolve<BaseDataProviderManager>().LoadDataProvider();
+            dataProviderInstance.InitDatabase();
+
             //Registering some regular mvc stuff
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
