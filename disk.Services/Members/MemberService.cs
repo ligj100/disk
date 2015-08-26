@@ -28,7 +28,7 @@ namespace disk.Services.Members
             _memberRepository.Insert(member);
 
             //event notification
-            //_eventPublisher.EntityInserted(customer);
+            //_eventPublisher.EntityInserted(Member);
         }
     }
 }
