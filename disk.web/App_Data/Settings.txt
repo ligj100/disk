@@ -1,0 +1,2 @@
+DataProvider: mysql
+DataConnectionString: Data Source=localhost;Database=disk;User ID=root;Password=root
