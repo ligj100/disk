@@ -38,6 +38,7 @@ namespace disk.Core.Domain.Members
         /// </summary>
         public string Email { get; set; }
 
+
         /// <summary>
         /// 获取或设置用户手机号
         /// </summary>
