@@ -51,10 +51,10 @@ namespace disk.Web.Framework
                 .As<HttpSessionStateBase>()
                 .InstancePerLifetimeScope();
 
-            /*
+            
             //web helper
-            builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
-            //user agent helper
+            builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerRequest();
+         /*   //user agent helper
             builder.RegisterType<UserAgentHelper>().As<IUserAgentHelper>().InstancePerLifetimeScope();
             */
             

@@ -61,8 +61,8 @@
     <Compile Include="EfRepository.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="Initializers\CreateMySqlDatabaseIfNotExists.cs" />
-    <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="DiskObjectContext.cs" />
+    <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="Initializers\MySqlInitializer.cs" />
     <Compile Include="Mapping\Logging\ActivityLogMap.cs" />
     <Compile Include="Mapping\Logging\ActivityLogTypeMap.cs" />

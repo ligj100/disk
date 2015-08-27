@@ -52,20 +52,20 @@ namespace disk.Core
         /// </summary>
         /// <param name="useSsl">Use SSL</param>
         /// <returns>Store host location</returns>
-        string GetStoreHost(bool useSsl);
+        //string GetStoreHost(bool useSsl);
 
         /// <summary>
         /// Gets store location
         /// </summary>
         /// <returns>Store location</returns>
-        string GetStoreLocation();
+        //string GetStoreLocation();
 
         /// <summary>
         /// Gets store location
         /// </summary>
         /// <param name="useSsl">Use SSL</param>
         /// <returns>Store location</returns>
-        string GetStoreLocation(bool useSsl);
+        //string GetStoreLocation(bool useSsl);
 
         /// <summary>
         /// Returns true if the requested resource is one of the typical resources that needn't be processed by the cms engine.

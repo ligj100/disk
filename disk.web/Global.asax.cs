@@ -21,7 +21,9 @@ using disk.Web.Framework;
 using disk.Web.Framework.Mvc;
 using disk.Web.Framework.Mvc.Routes;
 using Microsoft.Ajax.Utilities;
+using Nop.Web.Framework.Mvc;
 using StackExchange.Profiling;
+using StackExchange.Profiling.EntityFramework6;
 
 
 namespace disk.web
@@ -48,12 +50,23 @@ namespace disk.web
         protected void Application_Start()
         {
             EngineContext.Initialize(false);
+           
+            //启用该功能，则需要手动到数据库里创建一个表：
+            //create table edmmetadata (id int,modelhash varchar(50));
+            MiniProfilerEF6.Initialize();
 
-            bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
+            //bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
+
+            //set dependency resolver
+            var dependencyResolver = new DiskDependencyResolver();
+            DependencyResolver.SetResolver(dependencyResolver);
+
+            //Add some functionality on top of the default ModelMetadataProvider
+            ModelMetadataProviders.Current = new DiskMetadataProvider();
 
             //init data provider
-            var dataProviderInstance = EngineContext.Current.Resolve<BaseDataProviderManager>().LoadDataProvider();
-            dataProviderInstance.InitDatabase();
+            //var dataProviderInstance = EngineContext.Current.Resolve<BaseDataProviderManager>().LoadDataProvider();
+            //dataProviderInstance.InitDatabase();
 
             //Registering some regular mvc stuff
             AreaRegistration.RegisterAllAreas();
@@ -64,26 +77,22 @@ namespace disk.web
             ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new DiskValidatorFactory()));
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            /*
-            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-             * */
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            
             //ignore static resources
             var webHelper = EngineContext.Current.Resolve<IWebHelper>();
             if (webHelper.IsStaticResource(this.Request))
                 return;
 
             //keep alive page requested (we ignore it to prevent creating a guest customer records)
-            string keepAliveUrl = string.Format("{0}keepalive/index", webHelper.GetStoreLocation());
-            if (webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
-                return;
-
+            //string keepAliveUrl = string.Format("{0}keepalive/index", webHelper.GetStoreLocation());
+            //if (webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
+            //    return;
+            
             EnsureDatabaseIsInstalled();
 
             if (CanPerformProfilingAction())
@@ -94,23 +103,26 @@ namespace disk.web
 
         protected void Application_EndRequest(object sender, EventArgs e)
         {
+            
             //ignore static resources
             var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+            
             if (webHelper.IsStaticResource(this.Request))
                 return;
-
+            
             if (CanPerformProfilingAction())
             {
                 //stop as early as you can, even earlier with MvcMiniProfiler.MiniProfiler.Stop(discardResults: true);
                 MiniProfiler.Stop();
             }
-
+            
             //dispose registered resources
             //we do not register AutofacRequestLifetimeHttpModule as IHttpModule 
             //because it disposes resources before this Application_EndRequest method is called
             //and in this case the code above will throw an exception
             //UPDATE: we cannot do it. For more info see the following forum topic - http://www.nopcommerce.com/boards/t/22456/30-changeset-3db3868edcf2-loaderlock-was-detected.aspx
             //AutofacRequestLifetimeHttpModule.ContextEndRequest(sender, e);
+             
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -153,6 +165,7 @@ namespace disk.web
 
         protected void EnsureDatabaseIsInstalled()
         {
+            /*
             var webHelper = EngineContext.Current.Resolve<IWebHelper>();
             string installUrl = string.Format("{0}install", webHelper.GetStoreLocation());
             if (!webHelper.IsStaticResource(this.Request) &&
@@ -160,7 +173,7 @@ namespace disk.web
                 !webHelper.GetThisPageUrl(false).StartsWith(installUrl, StringComparison.InvariantCultureIgnoreCase))
             {
                 this.Response.Redirect(installUrl);
-            }
+            }*/
         }
 
         protected void SetWorkingCulture()
@@ -172,13 +185,13 @@ namespace disk.web
             var webHelper = EngineContext.Current.Resolve<IWebHelper>();
             if (webHelper.IsStaticResource(this.Request))
                 return;
-
+            
             //keep alive page requested (we ignore it to prevent creating a guest customer records)
-            string keepAliveUrl = string.Format("{0}keepalive/index", webHelper.GetStoreLocation());
-            if (webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
-                return;
+            //string keepAliveUrl = string.Format("{0}keepalive/index", webHelper.GetStoreLocation());
+            //if (webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
+            //    return;
 
-
+            /*
             if (webHelper.GetThisPageUrl(false).StartsWith(string.Format("{0}admin", webHelper.GetStoreLocation()),
                 StringComparison.InvariantCultureIgnoreCase))
             {
@@ -193,7 +206,7 @@ namespace disk.web
             }
             else
             {
-                /*
+                
                 //public store
                 var workContext = EngineContext.Current.Resolve<IWorkContext>();
                 if (workContext.CurrentMember != null )
@@ -201,8 +214,8 @@ namespace disk.web
                     var culture = new CultureInfo(workContext.WorkingLanguage.LanguageCulture);
                     Thread.CurrentThread.CurrentCulture = culture;
                     Thread.CurrentThread.CurrentUICulture = culture;
-                }*/
-            }
+                }
+            }*/
         }
 
         protected void LogException(Exception exc)

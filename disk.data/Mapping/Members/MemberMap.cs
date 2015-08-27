@@ -13,7 +13,7 @@ namespace disk.Data.Mapping.Members
         {
             this.ToTable("Member");
             this.HasKey(c => c.Id);
-            this.Property(u => u.Name).HasMaxLength(1000);
+            this.Property(u => u.Name).HasMaxLength(500);
             this.HasMany(c => c.MemberRoles)
                 .WithMany()
                 .Map(m => m.ToTable("Member_MemberRoles_Mapping"));
