@@ -16,6 +16,7 @@ namespace disk.Data
     /// </summary>
     public class DiskObjectContext : DbContext, IDbContext
     {
+
         #region Ctor
 
         public DiskObjectContext(string nameOrConnectionString)
