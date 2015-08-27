@@ -16,7 +16,9 @@ using disk.Core.Infrastructure;
 using disk.Core.Infrastructure.DependencyManagement;
 using disk.Data;
 using disk.Core.Fakes;
+using disk.Core.Plugins;
 using disk.Services.Members;
+using disk.Services.Tasks;
 using disk.Web.Framework.Mvc.Routes;
 
 //using disk.Web.Framework.Themes;
@@ -49,10 +51,10 @@ namespace disk.Web.Framework
                 .As<HttpSessionStateBase>()
                 .InstancePerLifetimeScope();
 
-            /*
+            
             //web helper
-            builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
-            //user agent helper
+            builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerRequest();
+         /*   //user agent helper
             builder.RegisterType<UserAgentHelper>().As<IUserAgentHelper>().InstancePerLifetimeScope();
             */
             
@@ -91,16 +93,18 @@ namespace disk.Web.Framework
             //services
             builder.RegisterType<MemberService>().As<IMemberService>().InstancePerLifetimeScope();
             builder.RegisterType<RoleService>().As<IRoleService>().InstancePerLifetimeScope();
-            /*
+           
             //plugins
             builder.RegisterType<PluginFinder>().As<IPluginFinder>().InstancePerLifetimeScope();
-            builder.RegisterType<OfficialFeedManager>().As<IOfficialFeedManager>().InstancePerLifetimeScope();
+            //builder.RegisterType<OfficialFeedManager>().As<IOfficialFeedManager>().InstancePerLifetimeScope();
 
-
+ 
             //work context
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
+            //Task
+            builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>().InstancePerLifetimeScope();
             //store context
-            builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerLifetimeScope();
+ /*           builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerLifetimeScope();
 
             //services
             builder.RegisterType<BackInStockSubscriptionService>().As<IBackInStockSubscriptionService>().InstancePerLifetimeScope();
@@ -256,7 +260,7 @@ namespace disk.Web.Framework
             builder.RegisterType<SitemapGenerator>().As<ISitemapGenerator>().InstancePerLifetimeScope();
             builder.RegisterType<PageHeadBuilder>().As<IPageHeadBuilder>().InstancePerLifetimeScope();
 
-            builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>().InstancePerLifetimeScope();
+            
 
             builder.RegisterType<ExportManager>().As<IExportManager>().InstancePerLifetimeScope();
             builder.RegisterType<ImportManager>().As<IImportManager>().InstancePerLifetimeScope();

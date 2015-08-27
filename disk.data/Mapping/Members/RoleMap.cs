@@ -14,7 +14,7 @@ namespace disk.Data.Mapping.Members
             this.ToTable("Role");
             this.HasKey(c => c.Id);
             this.Property(u => u.Name).HasMaxLength(200);
-            this.Property(c => c.Desc).HasMaxLength(1000);
+            this.Property(c => c.Desc).HasMaxLength(500);
         }
     }
 }

@@ -38,9 +38,18 @@ namespace disk.Data.Initializers
             }
             else
             {
-                context.Database.Create();
-                Seed(context);
-                context.SaveChanges();
+                try
+                {
+                    context.Database.Create();
+                    Seed(context);
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    
+                    //throw;
+                }
+                
             }
         }
 

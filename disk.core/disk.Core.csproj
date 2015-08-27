@@ -83,6 +83,9 @@
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Caching\DiskNullCache.cs" />
     <Compile Include="Caching\PerRequestCacheManager.cs" />
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
+    <Compile Include="ComponentModel\WriteLockDisposable.cs" />
     <Compile Include="Configuration\ISettings.cs" />
     <Compile Include="Configuration\DiskConfig.cs" />
     <Compile Include="Data\BaseDataProviderManager.cs" />
@@ -92,8 +95,13 @@
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="DiskException.cs" />
+    <Compile Include="Domain\Logging\ActivityLog.cs" />
+    <Compile Include="Domain\Logging\ActivityLogType.cs" />
+    <Compile Include="Domain\Logging\Log.cs" />
+    <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Member.cs" />
     <Compile Include="Domain\Members\Role.cs" />
+    <Compile Include="Domain\Tasks\ScheduleTask.cs" />
     <Compile Include="Fakes\Extensions.cs" />
     <Compile Include="Fakes\FakeHttpContext.cs" />
     <Compile Include="Fakes\FakeHttpRequest.cs" />
@@ -111,7 +119,19 @@
     <Compile Include="Infrastructure\DiskEngine.cs" />
     <Compile Include="Infrastructure\Singleton.cs" />
     <Compile Include="Infrastructure\WebAppTypeFinder.cs" />
+    <Compile Include="IWebHelper.cs" />
+    <Compile Include="IWorkContext.cs" />
+    <Compile Include="DiskVersion.cs" />
+    <Compile Include="Plugins\BasePlugin.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\IPluginFinder.cs" />
+    <Compile Include="Plugins\PluginDescriptor.cs" />
+    <Compile Include="Plugins\PluginExtensions.cs" />
+    <Compile Include="Plugins\PluginFileParser.cs" />
+    <Compile Include="Plugins\PluginFinder.cs" />
+    <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

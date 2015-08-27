@@ -15,9 +15,12 @@ namespace disk.Core.Domain.Members
         /// </summary>
         public Member()
         {
-            
+            this.MemberGuid = Guid.NewGuid();
         }
-
+        /// <summary>
+        /// Gets or sets the Member Guid
+        /// </summary>
+        public Guid MemberGuid { get; set; }
         /// <summary>
         /// 获取或设置会员姓名
         /// </summary>
@@ -73,6 +76,7 @@ namespace disk.Core.Domain.Members
         /// Gets or sets the date and time of last login
         /// </summary>
         public DateTime? LastLoginDate { get; set; }
+
 
         /// <summary>
         /// Gets or sets the customer roles
