@@ -16,7 +16,9 @@ using disk.Core.Infrastructure;
 using disk.Core.Infrastructure.DependencyManagement;
 using disk.Data;
 using disk.Core.Fakes;
+using disk.Core.Log;
 using disk.Core.Plugins;
+using disk.Services.Logging;
 using disk.Services.Members;
 using disk.Services.Tasks;
 using disk.Web.Framework.Mvc.Routes;
@@ -103,6 +105,8 @@ namespace disk.Web.Framework
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
             //Task
             builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>().InstancePerLifetimeScope();
+            //Log
+            builder.RegisterType<DefaultLogger>().As<ILogger>().InstancePerLifetimeScope();
             //store context
  /*           builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerLifetimeScope();
 
@@ -231,7 +235,7 @@ namespace disk.Web.Framework
             builder.RegisterType<TaxService>().As<ITaxService>().InstancePerLifetimeScope();
             builder.RegisterType<TaxCategoryService>().As<ITaxCategoryService>().InstancePerLifetimeScope();
 
-            builder.RegisterType<DefaultLogger>().As<ILogger>().InstancePerLifetimeScope();
+            
 
             //pass MemoryCacheManager as cacheManager (cache settings between requests)
             builder.RegisterType<CustomerActivityService>().As<ICustomerActivityService>()

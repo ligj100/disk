@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Hosting;
 using disk.Core.Data;
 using disk.Core.Infrastructure;
+using disk.Core.Log;
 
 namespace disk.Core
 {
@@ -17,7 +18,7 @@ namespace disk.Core
     public partial class WebHelper : IWebHelper
     {
         private readonly HttpContextBase _httpContext;
-
+        
         /// <summary>
         /// Ctor
         /// </summary>

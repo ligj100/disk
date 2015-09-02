@@ -28,19 +28,17 @@ namespace disk.web
                       "~/Content/css/bootstrap-theme.min.css",
                       "~/Content/css/site.css"));
             
-            //tree
-            bundles.Add(new StyleBundle("~/Content/css/tree").Include(
-                      "~/Content/css/zTreeStyle/zTreeStyle.css"));
-            bundles.Add(new ScriptBundle("~/bundles/tree").Include(
-                      "~/Scripts/jquery.ztree.core-{version}.js"));
 
-            //easy ui
-            bundles.Add(new ScriptBundle("~/bundles/easyui").Include(
-                     "~/Scripts/jquery.easyui.min.js"));
-            bundles.Add(new StyleBundle("~/Content/css/easyui").Include(
+            //index
+            bundles.Add(new ScriptBundle("~/bundles/index").Include(
+                     "~/Scripts/jquery.easyui.min.js",
+                     "~/Scripts/jquery.ztree.core-{version}.js",
+                     "~/Scripts/Index.js"));
+            bundles.Add(new StyleBundle("~/Content/css/index").Include(
                       "~/Content/css/site.css",
                       "~/Content/css/themes/bootstrap/easyui.css",
-                      "~/Content/css/themes/themes/icon.css"));
+                      "~/Content/css/themes/themes/icon.css",
+                      "~/Content/css/zTreeStyle/zTreeStyle.css"));
         }
     }
 }

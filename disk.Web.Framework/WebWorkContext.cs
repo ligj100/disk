@@ -4,6 +4,7 @@ using System.Web;
 using disk.Core;
 using disk.Core.Fakes;
 using disk.Core.Domain.Members;
+using disk.Core.Log;
 using disk.Services.Members;
 
 /*

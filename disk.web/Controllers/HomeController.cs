@@ -29,13 +29,16 @@ namespace disk.web.Controllers
 
         public JsonResult LoadMenu()
         {
-            var zNodes = "[" +
-                         "{id:1, pId:0, name:\"[core] 基本功能 演示\", open:true}," +
-                         "{ id: 101, pId: 1, name: \"最简单的树1\", file: \"/Home/About\" }," +
-                         "{id:102, pId:1, name:\"最简单的树2\", file:\"http://www.163.com\"}]";
+            IList<MenuItem> list = new List<MenuItem>();
+            list.Add(new MenuItem(){id=1,pId = 0,name="基本功能 演示",open=true});
+            list.Add(new MenuItem() { id = 101, pId = 1, name = "最简单的树1", file = Url.Action("About", "Home") });
+            list.Add(new MenuItem() { id = 102, pId = 1, name = "最简单的树2", file = Url.Action("Index", "Member") });
             var json = new JsonResult();
-            json.Data = zNodes;
+            json.Data = list;
             return json;
+            
         }
     }
+
+    
 }

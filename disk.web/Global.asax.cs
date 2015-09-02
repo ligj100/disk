@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,7 @@ using disk.Core.Data;
 using disk.Core.Domain;
 using disk.Core.Domain.Logging;
 using disk.Core.Infrastructure;
+using disk.Core.Log;
 using disk.Services.Logging;
 //using disk.Services.Logging;
 //using disk.Services.Tasks;
@@ -49,6 +51,7 @@ namespace disk.web
 
         protected void Application_Start()
         {
+            
             EngineContext.Initialize(false);
            
             //启用该功能，则需要手动到数据库里创建一个表：
