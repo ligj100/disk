@@ -64,6 +64,9 @@
     <Compile Include="DiskObjectContext.cs" />
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="Initializers\MySqlInitializer.cs" />
+    <Compile Include="Mapping\Articles\ArticleCommentMap.cs" />
+    <Compile Include="Mapping\Articles\ArticlePostMap.cs" />
+    <Compile Include="Mapping\Catalogs\ArticleCategoryMap.cs" />
     <Compile Include="Mapping\Logging\ActivityLogMap.cs" />
     <Compile Include="Mapping\Logging\ActivityLogTypeMap.cs" />
     <Compile Include="Mapping\Logging\LogMap.cs" />

@@ -29,10 +29,15 @@ namespace disk.web.Controllers
 
         public JsonResult LoadMenu()
         {
+           //文章子菜单
+            IList<MenuItem> clist = new List<MenuItem>();
+            clist.Add(new MenuItem() { id = 101, pId = 1, text = "所有文章", file = Url.Action("List", "ArticlePost") });
+            clist.Add(new MenuItem() { id = 102, pId = 1, text = "写文章", file = Url.Action("Add", "ArticlePost") });
+            clist.Add(new MenuItem() { id = 102, pId = 1, text = "分类目录", file = Url.Action("Index", "Category") });
+
             IList<MenuItem> list = new List<MenuItem>();
-            list.Add(new MenuItem(){id=1,pId = 0,name="基本功能 演示",open=true});
-            list.Add(new MenuItem() { id = 101, pId = 1, name = "最简单的树1", file = Url.Action("About", "Home") });
-            list.Add(new MenuItem() { id = 102, pId = 1, name = "最简单的树2", file = Url.Action("Index", "Member") });
+            list.Add(new MenuItem() { id = 1, pId = 0, text = "文章", open = true, children = clist});
+
             var json = new JsonResult();
             json.Data = list;
             return json;

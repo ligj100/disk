@@ -18,13 +18,13 @@ using disk.Data;
 using disk.Core.Fakes;
 using disk.Core.Log;
 using disk.Core.Plugins;
+using disk.Services.Articles;
+using disk.Services.Catalogs;
+using disk.Services.Events;
 using disk.Services.Logging;
 using disk.Services.Members;
 using disk.Services.Tasks;
 using disk.Web.Framework.Mvc.Routes;
-
-//using disk.Web.Framework.Themes;
-//using disk.Web.Framework.UI;
 
 namespace disk.Web.Framework
 {
@@ -108,13 +108,13 @@ namespace disk.Web.Framework
             //Log
             builder.RegisterType<DefaultLogger>().As<ILogger>().InstancePerLifetimeScope();
             //store context
- /*           builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerLifetimeScope();
+            //builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerLifetimeScope();
 
             //services
-            builder.RegisterType<BackInStockSubscriptionService>().As<IBackInStockSubscriptionService>().InstancePerLifetimeScope();
-            builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
-            builder.RegisterType<CompareProductsService>().As<ICompareProductsService>().InstancePerLifetimeScope();
-            builder.RegisterType<RecentlyViewedProductsService>().As<IRecentlyViewedProductsService>().InstancePerLifetimeScope();
+            builder.RegisterType<ArticleCategoryService>().As<IArticleCategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<ArticlePostService>().As<IArticlePostService>().InstancePerLifetimeScope();
+            builder.RegisterType<ArticleCommentService>().As<IArticleCommentService>().InstancePerLifetimeScope();
+            /*builder.RegisterType<RecentlyViewedProductsService>().As<IRecentlyViewedProductsService>().InstancePerLifetimeScope();
             builder.RegisterType<ManufacturerService>().As<IManufacturerService>().InstancePerLifetimeScope();
             builder.RegisterType<PriceFormatter>().As<IPriceFormatter>().InstancePerLifetimeScope();
             builder.RegisterType<ProductAttributeFormatter>().As<IProductAttributeFormatter>().InstancePerLifetimeScope();
@@ -278,7 +278,7 @@ namespace disk.Web.Framework
            */
                 
             builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
-            /*
+            
             //Register event consumers
             var consumers = typeFinder.FindClassesOfType(typeof(IConsumer<>)).ToList();
             foreach (var consumer in consumers)
@@ -293,7 +293,7 @@ namespace disk.Web.Framework
             }
             builder.RegisterType<EventPublisher>().As<IEventPublisher>().SingleInstance();
             builder.RegisterType<SubscriptionService>().As<ISubscriptionService>().SingleInstance();
-            */
+            
         }
 
         public int Order

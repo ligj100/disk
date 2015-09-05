@@ -20,7 +20,7 @@ using Nop.Services.Directory;
 using Nop.Services.Localization;
 using Nop.Services.Stores;
 using Nop.Services.Vendors;
-using Nop.Web.Framework.Localization;
+using disk.Web.Framework.Localization;
 */
 namespace disk.Web.Framework
 {

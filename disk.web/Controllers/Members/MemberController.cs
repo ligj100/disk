@@ -27,16 +27,6 @@ namespace disk.web.Controllers.Members
         // GET: /Member/
         public ActionResult Index()
         {
-            /*
-            //InstallController install = new InstallController();
-            //install.Index();
-            Member m = new Member()
-            {
-                Name = "aaa"
-                
-            };
-            _memberService.InsertMember(m);
-             * */
             return View();
         }
 

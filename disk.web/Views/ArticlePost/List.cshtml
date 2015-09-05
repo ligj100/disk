@@ -1,0 +1,53 @@
+﻿@using disk.Web.Extensions
+@model disk.web.Models.Article.ArticlePostListModels
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="page blog-page">
+    <div class="page-body">
+        <div class="blog-posts">
+            @foreach (var item in Model.ArticlePosts)
+            {
+                <div class="post">
+                    <div class="post-head">
+                        <a class="post-title" href="@Url.Action("Show", "ArticlePost",new{id=item.Id})" target="_blank">@item.Title</a>
+                        <span class="post-date">-@item.CreatedOnUtc.ToString("D")</span>
+                    </div>
+                    <div class="post-body">
+                        @Html.Raw(item.Intro)
+                    </div>
+                    @*@if (item.Tags.Count > 0)
+    {
+        <div class="tags">
+            <label>@T("Blog.Tags"):</label>
+            <ul>
+                @for (int i = 0; i < item.Tags.Count; i++)
+                {
+                    var tag = item.Tags[i];
+                    <li><a href="@Url.RouteUrl("BlogByTag", new { tag = tag })">@tag</a></li>
+                    if (i != item.Tags.Count - 1)
+                    {
+                        <li class="separator">,</li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+                    @if (item)
+                    {
+                        <div class="blog-details">
+                            <a href="@Url.RouteUrl("BlogPost", new { SeName = item.SeName })">
+                                @string.Format(T("Blog.CommentsLink").Text, item.NumberOfComments)
+                            </a>
+                        </div>
+                    }
+                    @Html.Widget("bloglist_page_inside_post", item.Id)*@
+                </div>
+            }
+        </div>
+        <div class="pager">
+            @Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber")
+        </div>
+    </div>
+</div>

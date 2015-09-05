@@ -43,6 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseServices.cs" />
+    <Compile Include="Catalogs\ArticleCategoryService.cs" />
+    <Compile Include="Articles\ArticleCommentService.cs" />
+    <Compile Include="Articles\ArticlePostService.cs" />
+    <Compile Include="Catalogs\IArticleCategoryService.cs" />
+    <Compile Include="Articles\IArticleCommentService.cs" />
+    <Compile Include="Articles\IArticlePostService.cs" />
+    <Compile Include="Events\EventPublisher.cs" />
+    <Compile Include="Events\EventPublisherExtensions.cs" />
+    <Compile Include="Events\IConsumer.cs" />
+    <Compile Include="Events\IEventPublisher.cs" />
+    <Compile Include="Events\ISubscriptionService.cs" />
+    <Compile Include="Events\SubscriptionService.cs" />
+    <Compile Include="IBaseServices.cs" />
     <Compile Include="Logging\ClearLogTask.cs" />
     <Compile Include="Logging\CustomerActivityService.cs" />
     <Compile Include="Logging\DefaultLogger.cs" />
@@ -55,6 +69,8 @@
     <Compile Include="Members\MemberService.cs" />
     <Compile Include="Members\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\EncryptionService.cs" />
+    <Compile Include="Security\IEncryptionService.cs" />
     <Compile Include="Tasks\IScheduleTaskService.cs" />
     <Compile Include="Tasks\ITask.cs" />
     <Compile Include="Tasks\ScheduleTaskService.cs" />
@@ -76,6 +92,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

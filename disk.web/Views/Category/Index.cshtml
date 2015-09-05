@@ -1,0 +1,32 @@
+﻿
+
+<h2>文章类目管理</h2>
+<table id="dg" class="easyui-datagrid" title="Row Editing in DataGrid" style="width: 95%; height: auto" data-options="
+       iconcls:'icon-edit',
+       singleselect:true,
+       toolbar:'#tb',
+       url:'@Url.Action("PageData", "ArticlePost")',
+       method:'post',
+       onclickrow:onclickrow
+       ">
+    <thead>
+    <tr>
+        <th data-options=" field:'id',checkbox:true">
+    </th>
+    <th data-options="field:'Title',width:35%">标题</th>
+    <th data-options="field:'Member.Name',width:15%">作者</th>
+    <th data-options="field:'Member.Name',width:15%">分类</th>
+    <th data-options="field:'Member.Name',width:15%">标签</th>
+    <th data-options="field:'Member.Name',width:10%">评论</th>
+    <th data-options="field:'Member.Name',width:10%">日期</th>
+    </tr>
+    </thead>
+</table>
+<div id="tb" style="height:auto">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">Append</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">Remove</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Accept</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Reject</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">GetChanges</a>
+</div>
+

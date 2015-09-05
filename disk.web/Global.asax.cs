@@ -23,7 +23,6 @@ using disk.Web.Framework;
 using disk.Web.Framework.Mvc;
 using disk.Web.Framework.Mvc.Routes;
 using Microsoft.Ajax.Utilities;
-using Nop.Web.Framework.Mvc;
 using StackExchange.Profiling;
 using StackExchange.Profiling.EntityFramework6;
 

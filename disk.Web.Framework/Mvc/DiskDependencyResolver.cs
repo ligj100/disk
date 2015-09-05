@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using disk.Core.Infrastructure;
 
-namespace Nop.Web.Framework.Mvc
+namespace disk.Web.Framework.Mvc
 {
     public class DiskDependencyResolver : IDependencyResolver
     {

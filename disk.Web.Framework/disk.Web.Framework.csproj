@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
@@ -53,6 +57,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Recaptcha">
+      <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -64,6 +71,9 @@
     <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -86,17 +96,22 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyRegistrar.cs" />
-    <Compile Include="Mvc\BaseNopModel.cs" />
+    <Compile Include="HtmlExtensions.cs" />
+    <Compile Include="Mvc\BaseDiskModel.cs" />
     <Compile Include="Mvc\CommaSeparatedModelBinder.cs" />
     <Compile Include="Mvc\DeleteConfirmationModel.cs" />
     <Compile Include="Mvc\DependencyRegistrarExtensions.cs" />
     <Compile Include="Mvc\IModelAttribute.cs" />
     <Compile Include="Mvc\DiskDependencyResolver.cs" />
     <Compile Include="Mvc\DiskMetadataProvider.cs" />
-    <Compile Include="Mvc\NopModelBinder.cs" />
+    <Compile Include="Mvc\DiskModelBinder.cs" />
     <Compile Include="Mvc\NullJsonResult.cs" />
     <Compile Include="Mvc\Routes\GuidConstraint.cs" />
     <Compile Include="Mvc\Routes\IRouteProvider.cs" />
@@ -105,6 +120,20 @@
     <Compile Include="Mvc\XmlDownloadResult.cs" />
     <Compile Include="DiskValidatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AsIsBundleOrderer.cs" />
+    <Compile Include="UI\Captcha\CaptchaSettings.cs" />
+    <Compile Include="UI\Captcha\CaptchaValidatorAttribute.cs" />
+    <Compile Include="UI\Captcha\HtmlExtensions.cs" />
+    <Compile Include="UI\DataListExtensions.cs" />
+    <Compile Include="UI\IPageHeadBuilder.cs" />
+    <Compile Include="UI\LayoutExtensions.cs" />
+    <Compile Include="UI\NotifyType.cs" />
+    <Compile Include="UI\PageHeadBuilder.cs" />
+    <Compile Include="UI\Paging\BasePageableModel.cs" />
+    <Compile Include="UI\Paging\IPageableModel.cs" />
+    <Compile Include="UI\Paging\Pager.cs" />
+    <Compile Include="UI\ResourceLocation.cs" />
+    <Compile Include="Validators\BaseNopValidator.cs" />
     <Compile Include="WebWorkContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +154,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

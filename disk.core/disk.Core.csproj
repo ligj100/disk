@@ -98,13 +98,21 @@
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="DiskException.cs" />
+    <Compile Include="Domain\Articles\ArticleComment.cs" />
+    <Compile Include="Domain\Articles\ArticlePost.cs" />
+    <Compile Include="Domain\Articles\ArticlePostTag.cs" />
+    <Compile Include="Domain\Catalogs\ArticleCategory.cs" />
     <Compile Include="Domain\Logging\ActivityLog.cs" />
     <Compile Include="Domain\Logging\ActivityLogType.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Member.cs" />
     <Compile Include="Domain\Members\Role.cs" />
+    <Compile Include="Domain\Security\SecuritySettings.cs" />
     <Compile Include="Domain\Tasks\ScheduleTask.cs" />
+    <Compile Include="Events\EntityDeleted.cs" />
+    <Compile Include="Events\EntityInserted.cs" />
+    <Compile Include="Events\EntityUpdated.cs" />
     <Compile Include="Fakes\Extensions.cs" />
     <Compile Include="Fakes\FakeHttpContext.cs" />
     <Compile Include="Fakes\FakeHttpRequest.cs" />
@@ -122,6 +130,7 @@
     <Compile Include="Infrastructure\DiskEngine.cs" />
     <Compile Include="Infrastructure\Singleton.cs" />
     <Compile Include="Infrastructure\WebAppTypeFinder.cs" />
+    <Compile Include="IPagedList.cs" />
     <Compile Include="IWebHelper.cs" />
     <Compile Include="IWorkContext.cs" />
     <Compile Include="DiskVersion.cs" />
@@ -130,6 +139,7 @@
     <Compile Include="Log\IDiskLogProvider.cs" />
     <Compile Include="Log\Log4netLogger.cs" />
     <Compile Include="Log\Log4netLogProvider.cs" />
+    <Compile Include="PagedList.cs" />
     <Compile Include="Plugins\BasePlugin.cs" />
     <Compile Include="Plugins\IPlugin.cs" />
     <Compile Include="Plugins\IPluginFinder.cs" />
@@ -142,7 +152,6 @@
     <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Log\vssver2.scc" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
