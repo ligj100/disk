@@ -5,9 +5,9 @@ using System.Web;
 
 namespace disk.web.Models.Common
 {
-    public class PageJsonModel<T> 
+    public class PageJsonModels<T> 
     {
-        public PageJsonModel()
+        public PageJsonModels()
         {
             rows = new List<T>();
         }

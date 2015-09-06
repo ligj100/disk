@@ -181,7 +181,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\GenerateStaticFileAttribute.cs" />
-    <Compile Include="App_Start\MenuItem.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Content\ueditor\net\App_Code\Config.cs" />
@@ -209,7 +208,8 @@
     <Compile Include="Models\Article\ArticlePostListModels.cs" />
     <Compile Include="Models\Article\ArticlePostModels.cs" />
     <Compile Include="Models\Article\CategoryModels.cs" />
-    <Compile Include="Models\Common\PageJsonModel.cs" />
+    <Compile Include="Models\Common\MenuModels.cs" />
+    <Compile Include="Models\Common\PageJsonModels.cs" />
     <Compile Include="Models\Common\PagerModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Members\MemberModels.cs" />

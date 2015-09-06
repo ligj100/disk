@@ -45,9 +45,18 @@ namespace disk.web.Controllers.Article
 
         public JsonResult PageData()
         {
-            IPagedList<ArticlePost> list = _articlePostService.GetPagedList(0, 15);
+            int pageIndex = 0;
+            int rows = 15;
+            string pageStr = HttpContext.Request.Form["page"];
+            string rowsstr = HttpContext.Request.Form["rows"];
+            int.TryParse(pageStr, out pageIndex);
+            int.TryParse(rowsstr, out rows);
+            if (pageIndex < 0) pageIndex = 0;
+            else pageIndex--;
+            if (rows < 1) rows = 15;
+            IPagedList<ArticlePost> list = _articlePostService.GetPagedList(pageIndex, rows);
             JsonResult jr = new JsonResult();
-            PageJsonModel<ArticlePost> page = new PageJsonModel<ArticlePost>();
+            PageJsonModels<ArticlePost> page = new PageJsonModels<ArticlePost>();
             page.total = list.TotalCount;
             page.rows = list;
             jr.Data = page;
@@ -121,6 +130,41 @@ namespace disk.web.Controllers.Article
             ViewBag.Keywords = model.MetaKeywords;
             ViewBag.Description = model.MetaDescription;
             return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult Delete()
+        {
+            JsonResult jr = new JsonResult();
+            string IdStr = HttpContext.Request.Form["Id"];
+            if (string.IsNullOrEmpty(IdStr))
+            {
+                jr.Data = " {status = -1, msg = \"111\"}";
+                return jr;
+            }
+            int id = 0;
+            int.TryParse(IdStr, out id);
+            if (id <= 0)
+            {
+                jr.Data = " {status = -1, msg = \"111\"}";
+                return jr;
+            }
+
+            
+            try
+            {
+                var model = _articlePostService.GetById(id);
+                _articlePostService.Delete(model);
+                jr.Data = " {status = 0, msg = \"111\"}";
+                return jr;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                jr.Data = " {status = 0, msg = \""+ex.Message+"\"}";
+                return jr;
+            }
+            
         }
 
         #endregion

@@ -1,7 +1,50 @@
-﻿
-@{
-    ViewBag.Title = "Manage";
+﻿<table id="dg" class="easyui-datagrid" style="min-height: 350px;"
+       data-options="url:'@Url.Action("PageData", "ArticlePost")',fitColumns:true,singleSelect:true,pagination:true,toolbar:'#tb',loadMsg:'正在拼了命的给您加载.......',idField:'Id',rownumbers:true">
+    <thead>
+        <tr>
+
+            <th data-options="field:'Title',width:100">标题</th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">新增</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit()">删除</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除</a>
+</div>
+<div id="win"></div>
+@section Scripts {
+    @Scripts.Render("~/bundles/easyui")
+    <script type="text/javascript">
+        function append() {}
+
+        function removeit() {
+            var rows = $('#dg').datagrid('getSelected');
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete", "ArticlePost")',
+                dataType: "json",
+                data: {Id:rows.Id},
+                success: function(data) {
+                    data = eval(data);
+                    if (data.Status == 0) {
+                        var Index = $('dg').datagrid('getRowIndex', rows);
+                        $('#dg').datagrid('deleteRow',Index);
+                    } else {
+                        $('#win').val(data.msg);
+                        $('#win').window({
+                            width: 600,
+                            height: 400,
+                            modal: true
+                        });
+                    }
+                }
+            });
+        }
+
+        function edit() {
+
+        }
+
+    </script>
 }
-
-<h2>Manage</h2>
-

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace disk.web
+namespace disk.web.Models.Common
 {
-	public class MenuItem
-	{
-	    public MenuItem()
+    public class MenuModels
+    {
+        public MenuModels()
 	    {
-            children = new List<MenuItem>();
+            children = new List<MenuModels>();
 	    }
 
 	    public int id { get; set; }
@@ -18,6 +18,6 @@ namespace disk.web
 	    public string text { get; set; }
 	    public string file { get; set; }
 	    public string iconCls { get; set; }
-	    public IList<MenuItem> children { get; set; }
-	}
+        public IList<MenuModels> children { get; set; }
+    }
 }
