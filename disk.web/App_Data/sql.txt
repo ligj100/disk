@@ -1,0 +1,1 @@
+create table EdmMetadata(Id int,ModelHash varchar(100));
